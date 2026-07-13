@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 from crewai import Crew, Process
 from fin_agents import FinAgents, StreamToExpander
 from fin_tasks import FinTasks
-from template.fin_template import fin_template
+from fin_template import fin_template
 
 
 st.set_page_config(page_icon="📝", page_title="ZeeFinReporter", layout="wide")
