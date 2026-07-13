@@ -1,61 +1,47 @@
 import streamlit as st
-import re
 from crewai import Agent, LLM
 
 
-# LLM Configuration
 llm = LLM(
     model="groq/llama-3.1-8b-instant",
-    api_key=st.secrets["GROQ_API"]
+    api_key=st.secrets["GROQ_API"],
 )
 
 
 class FinAgents:
 
-    def __init__(self):
-        self.llm = llm
-
-
-    def financial_researcher(self):
+    def researcher(self):
         return Agent(
-            role="Financial Research Analyst",
-            goal="Collect and analyze financial market information",
-            backstory=(
-                "You are an expert financial analyst who gathers "
-                "stock market data, news, and financial insights."
-            ),
-            llm=self.llm,
+            role="Financial Researcher",
+            goal="Research financial markets and companies",
+            backstory="Expert financial researcher who collects market data.",
+            llm=llm,
             verbose=True
         )
 
 
-    def financial_analyst(self):
+    def analyst(self):
         return Agent(
             role="Financial Analyst",
-            goal="Analyze financial data and provide investment insights",
-            backstory=(
-                "You specialize in analyzing company performance, "
-                "financial statements, and market trends."
-            ),
-            llm=self.llm,
+            goal="Analyze financial data and generate insights",
+            backstory="Expert in financial analysis and investment research.",
+            llm=llm,
             verbose=True
         )
 
 
-    def investment_advisor(self):
+    def advisor(self):
         return Agent(
             role="Investment Advisor",
-            goal="Provide investment recommendations based on analysis",
-            backstory=(
-                "You provide clear financial advice using research "
-                "and market analysis."
-            ),
-            llm=self.llm,
+            goal="Provide investment recommendations",
+            backstory="Experienced investment advisor.",
+            llm=llm,
             verbose=True
         )
 
 
 class StreamToExpander:
+
     def __init__(self, expander):
         self.expander = expander
 
