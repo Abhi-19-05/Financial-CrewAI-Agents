@@ -1,4 +1,5 @@
-from crewai_tools import tool
+
+from crewai.tools import tool
 from langchain_community.tools import DuckDuckGoSearchResults 
 import json
 import yfinance as yf
