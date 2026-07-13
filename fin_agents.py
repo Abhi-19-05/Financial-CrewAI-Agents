@@ -2,6 +2,12 @@ import streamlit as st
 from crewai import Agent, LLM
 from fin_tools import SearchTool
 import re
+from crewai import LLM
+
+llm = LLM(
+    model="groq/mixtral-8x7b-32768",
+    api_key=st.secrets["GROQ_API"],
+)
 
 # AGENTS
 class FinAgents():
